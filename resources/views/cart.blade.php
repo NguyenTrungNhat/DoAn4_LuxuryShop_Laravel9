@@ -28,9 +28,15 @@
     <div class="cart-area section-space-y-axis-100">
         <div class="container">
             <div class="row">
+                @if ($message = Session::get('success'))
+                <div class="p-4 mb-3 bg-green-400 rounded" style="background-color: aquamarine;">
+                    <p class="text-green-800">{{ $message }}</p>
+                </div>
+                @endif
+            </div>
+            <div class="row">
                 <div class="col-12">
-                    <form action="javascript:void(0)">
-                        <div class="table-content table-responsive">
+                <div class="table-content table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -43,66 +49,43 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($cartItems as $item)
                                     <tr>
                                         <td class="product_remove">
-                                            <a href="javascript:void(0)">
-                                                <i class="pe-7s-close" title="Remove"></i>
-                                            </a>
+                                            <form action="{{route('cart.remove')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" value="{{ $item->id }}" name="id">
+                                                <button class="buttonCart" style="background-color: #fff;
+                                                                                            width: 50px;
+                                                                                            height: 50px;
+                                                                                            line-height: 53px;
+                                                                                            text-align: center;
+                                                                                            display: block;
+                                                                                            -webkit-transition: all 0.3s ease 0s;
+                                                                                            -o-transition: all 0.3s ease 0s;
+                                                                                            transition: all 0.3s ease 0s;
+                                                                                            border:none;
+                                                                                            margin-left:10px">
+                                                    <i class="pe-7s-close" title="Remove"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                         <td class="product-thumbnail">
                                             <a href="javascript:void(0)">
-                                                <img src="/webApp/assets/images/product/small-size/1-1-112x124.jpg" alt="Cart Thumbnail">
+                                                <img style="width: 112px;height: 124px;" src="/webApp/assets/images/{{$item->attributes->image}}" alt="Cart Thumbnail">
                                             </a>
                                         </td>
-                                        <td class="product-name"><a href="javascript:void(0)">Black Pepper Grains</a></td>
-                                        <td class="product-price"><span class="amount">$80.00</span></td>
+                                        <td class="product-name"><a href="javascript:void(0)">{{ $item->name }}</a></td>
+                                        <td class="product-price"><span class="amount">{{number_format($item->price) }}</span></td>
                                         <td class="quantity">
                                             <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="1" type="text">
+                                                <input class="cart-plus-minus-box" value="{{$item->quantity}}" type="text">
                                             </div>
                                         </td>
-                                        <td class="product-subtotal"><span class="amount">$80.00</span></td>
+                                        <td class="product-subtotal"><span class="amount">{{number_format($item->price * $item->quantity)}}</span></td>
                                     </tr>
-                                    <tr>
-                                        <td class="product_remove">
-                                            <a href="javascript:void(0)">
-                                                <i class="pe-7s-close" title="Remove"></i>
-                                            </a>
-                                        </td>
-                                        <td class="product-thumbnail">
-                                            <a href="javascript:void(0)">
-                                                <img src="/webApp/assets/images/product/small-size/1-2-112x124.jpg" alt="Cart Thumbnail">
-                                            </a>
-                                        </td>
-                                        <td class="product-name"><a href="javascript:void(0)">Peanut Big Bean</a></td>
-                                        <td class="product-price"><span class="amount">$80.00</span></td>
-                                        <td class="quantity">
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="1" type="text">
-                                            </div>
-                                        </td>
-                                        <td class="product-subtotal"><span class="amount">$80.00</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="product_remove">
-                                            <a href="javascript:void(0)">
-                                                <i class="pe-7s-close" title="Remove"></i>
-                                            </a>
-                                        </td>
-                                        <td class="product-thumbnail">
-                                            <a href="javascript:void(0)">
-                                                <img src="/webApp/assets/images/product/small-size/1-3-112x124.jpg" alt="Cart Thumbnail">
-                                            </a>
-                                        </td>
-                                        <td class="product-name"><a href="javascript:void(0)">Dried Lemon Green</a></td>
-                                        <td class="product-price"><span class="amount">$80.00</span></td>
-                                        <td class="quantity">
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="1" type="text">
-                                            </div>
-                                        </td>
-                                        <td class="product-subtotal"><span class="amount">$80.00</span></td>
-                                    </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>
@@ -110,8 +93,27 @@
                             <div class="col-12">
                                 <div class="coupon-all">
                                     <div class="coupon">
-                                        <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                        <input class="button mt-xxs-30" name="apply_coupon" value="Apply coupon" type="submit">
+                                        <form action="{{ route('cart.clear') }}" method="POST">
+                                            @csrf
+                                            <button class="buttonCart" style="background-color: #010101;
+                                                                                border: 0 none;
+                                                                                border-radius: 2px;
+                                                                                color: #fff;
+                                                                                display: inline-block;
+                                                                                font-size: 13px;
+                                                                                font-weight: 700;
+                                                                                cursor: pointer;
+                                                                                height: 42px;
+                                                                                letter-spacing: 1px;
+                                                                                line-height: 42px;
+                                                                                padding: 0 25px;
+                                                                                text-transform: uppercase;
+                                                                                -webkit-transition: all 0.3s ease 0s;
+                                                                                -o-transition: all 0.3s ease 0s;
+                                                                                transition: all 0.3s ease 0s;
+                                                                                width: inherit;" class="button mt-xxs-30">Remove All Cart</button>
+                                        </form>
+                                        
                                     </div>
                                     <div class="coupon2">
                                         <input class="button" name="update_cart" value="Update cart" type="submit">
@@ -124,14 +126,12 @@
                                 <div class="cart-page-total">
                                     <h2>Cart totals</h2>
                                     <ul>
-                                        <li>Subtotal <span>$118.60</span></li>
-                                        <li>Total <span>$118.60</span></li>
+                                        <li>Total <span>${{number_format(Cart::getTotal()) }}</span></li>
                                     </ul>
                                     <a href="javascript:void(0)">Proceed to checkout</a>
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

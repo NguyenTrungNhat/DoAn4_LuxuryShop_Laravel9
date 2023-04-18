@@ -105,9 +105,27 @@
                                         <div class="product-add-action">
                                             <ul>
                                                 <li>
-                                                    <a href="cart.html">
-                                                        <i class="pe-7s-cart"></i>
-                                                    </a>
+                                                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $datas->Id }}" name="id">
+                                                        <input type="hidden" value="{{ $datas->Name }}" name="name">
+                                                        <input type="hidden" value="{{ $datas->Price }}" name="price">
+                                                        <input type="hidden" value="{{ $datas->ImagePath }}" name="image">
+                                                        <input type="hidden" value="1" name="quantity">
+                                                        <button class="buttonCart" style="background-color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 53px;
+  text-align: center;
+  display: block;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border:none;">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </button>
+                                                    </form>
+
                                                 </li>
                                                 <li>
                                                     <a href="compare.html">

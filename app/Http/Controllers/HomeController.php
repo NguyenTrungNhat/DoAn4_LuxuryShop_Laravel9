@@ -22,6 +22,7 @@ class HomeController extends Controller
             ->where('producttranslation.LanguageId','=',$language)
             ->limit(8)
             ->get();
+        //dd($data);
         return view('index',['categories' => $category,'data' => $data]);
     }
 

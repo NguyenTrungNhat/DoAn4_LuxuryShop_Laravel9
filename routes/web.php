@@ -19,16 +19,15 @@ Route::get('/tmp', function () {
 
 Route::controller(App\Http\Controllers\HomeController::class)->group(function(){
     Route::get('/{languageId?}','index')->name('home');
-    Route::get('/categories','categories')->name('categories');
-    Route::get('/detail','detail')->name('detail');
-    Route::get('/cart','cart')->name('cart');
-    Route::get('/checkout','checkout')->name('checkout');
-    Route::get('/login','login')->name('loging');
-    Route::get('/contact','contact')->name('contact');
-    Route::get('/blog','blog')->name('blog');
-    Route::get('/404','NotFound')->name('404');
-    Route::get('/about','About')->name('about');
-    Route::get('/pages','pages')->name('pages');
+    Route::get('/{languageId?}/categories','categories')->name('categories');
+    Route::get('/{languageId?}/detail','detail')->name('detail');
+    Route::get('/{languageId?}/checkout','checkout')->name('checkout');
+    Route::get('/{languageId?}/login','login')->name('loging');
+    Route::get('/{languageId?}/contact','contact')->name('contact');
+    Route::get('/{languageId?}/blog','blog')->name('blog');
+    Route::get('/{languageId?}/404','NotFound')->name('404');
+    Route::get('/{languageId?}/about','About')->name('about');
+    Route::get('/{languageId?}/pages','pages')->name('pages');
 });
 
 Route::controller(App\Http\Controllers\adminController::class)->group(function(){
@@ -43,3 +42,14 @@ Route::controller(App\Http\Controllers\ProductsController::class)->group(functio
     Route::post('/admin/Products/update/{id?}','update')->name('admin.Products.update'); 
     Route::get('/admin/Products/delete/{id?}','destroy')->name('admin.Products.delete'); 
 });
+
+Route::controller(App\Http\Controllers\CartController::class)->group(function(){
+    Route::get('/vi-VN/cartList', 'cartList')->name('cart.list');
+    Route::post('cart', 'addToCart')->name('cart.store');
+    Route::post('update-cart', 'updateCart')->name('cart.update');
+    Route::post('remove', 'removeCart')->name('cart.remove');
+    Route::post('clear', 'clearAllCart')->name('cart.clear'); 
+});
+
+
+

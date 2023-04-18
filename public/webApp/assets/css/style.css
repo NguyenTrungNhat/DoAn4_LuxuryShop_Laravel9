@@ -18058,6 +18058,12 @@ blockquote .inner-content .user-name:before {
   background-color: #010101;
 }
 
+.buttonCart:hover{
+  background-color: #bac34e !important;
+  color: #fff;
+}
+
+
 .product-list-item .product-name {
   font-size: 18px;
   margin-bottom: 10px;
