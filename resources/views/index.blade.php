@@ -107,7 +107,7 @@
                                                 <li>
                                                     <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
-                                                        <input type="hidden" value="{{ $datas->Id }}" name="id">
+                                                        <input type="hidden" value="{{ $datas->ProductId }}" name="id">
                                                         <input type="hidden" value="{{ $datas->Name }}" name="name">
                                                         <input type="hidden" value="{{ $datas->Price }}" name="price">
                                                         <input type="hidden" value="{{ $datas->ImagePath }}" name="image">

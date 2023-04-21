@@ -128,7 +128,7 @@
                                     <ul>
                                         <li>Total <span>${{number_format(Cart::getTotal()) }}</span></li>
                                     </ul>
-                                    <a href="javascript:void(0)">Proceed to checkout</a>
+                                    <a href="{{ route('cart.checkoutget') }}">Proceed to checkout</a>
                                 </div>
                             </div>
                         </div>

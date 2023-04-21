@@ -45,7 +45,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="header-middle-wrap">
-                        <a href="index.html" class="header-logo">
+                        <a href="{{route('home')}}" class="header-logo">
                             <img src="/webApp/assets/images/logo/dark.png" alt="Header Logo">
                         </a>
                         <div class="header-search-area d-none d-lg-block">

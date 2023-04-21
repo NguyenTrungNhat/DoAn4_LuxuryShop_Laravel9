@@ -19,15 +19,14 @@ Route::get('/tmp', function () {
 
 Route::controller(App\Http\Controllers\HomeController::class)->group(function(){
     Route::get('/{languageId?}','index')->name('home');
-    Route::get('/{languageId?}/categories','categories')->name('categories');
-    Route::get('/{languageId?}/detail','detail')->name('detail');
-    Route::get('/{languageId?}/checkout','checkout')->name('checkout');
-    Route::get('/{languageId?}/login','login')->name('loging');
-    Route::get('/{languageId?}/contact','contact')->name('contact');
-    Route::get('/{languageId?}/blog','blog')->name('blog');
-    Route::get('/{languageId?}/404','NotFound')->name('404');
-    Route::get('/{languageId?}/about','About')->name('about');
-    Route::get('/{languageId?}/pages','pages')->name('pages');
+    Route::get('/categories/{languageId?}','categories')->name('categories');
+    Route::get('/detail/{languageId?}','detail')->name('detail');
+    Route::get('/login/{languageId?}','login')->name('loging');
+    Route::get('/contact/{languageId?}','contact')->name('contact');
+    Route::get('/blog/{languageId?}','blog')->name('blog');
+    Route::get('/404/{languageId?}','NotFound')->name('404');
+    Route::get('/about/{languageId?}','About')->name('about');
+    Route::get('/pages/{languageId?}','pages')->name('pages');
 });
 
 Route::controller(App\Http\Controllers\adminController::class)->group(function(){
@@ -49,7 +48,11 @@ Route::controller(App\Http\Controllers\CartController::class)->group(function(){
     Route::post('update-cart', 'updateCart')->name('cart.update');
     Route::post('remove', 'removeCart')->name('cart.remove');
     Route::post('clear', 'clearAllCart')->name('cart.clear'); 
+    Route::get('/vi-VN/checkout','checkoutget')->name('cart.checkoutget');
+    Route::post('/vi-VN/checkout','checkoutpost')->name('cart.checkoutpost');
 });
+
+
 
 
 
