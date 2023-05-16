@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProductsModels;
+use App\Models\ProducttranslationModels;
+use App\Models\AttributespricesModels;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -13,7 +16,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = ProductsModels::all();
-        return view('/admin/Product/product',['Products' => $products]);
+        return view('/admin/Product/product', ['Products' => $products]);
     }
 
     /**
@@ -29,8 +32,34 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        ProductsModels::create($request -> all());
-        return redirect()-> route('admin.Products.index');
+        //dd($request);
+        ProductsModels::create([
+            'Active' => 1,
+            'BestSellers' => 0,
+            'CatID' => $request->CatID,
+            'Discount' => 0,
+            'HomeFlag' => 0,
+            'SeoAlias' => $request->SeoAlias,
+            'Title' => $request->Title,
+            'UnitsInStock' => $request->UnitsInStock,
+        ]);
+        $ProductNewId = ProductsModels::latest()->first();
+        ProducttranslationModels::create([
+            'Description' => $request->Description,
+            'Details' => $request->Details,
+            'LanguageId' => $request->LanguageId,
+            'Name' => $request->Name,
+            'ProductId' => $ProductNewId->Id,
+            'SeoAlias' => $request->SeoAlias,
+            'SeoDescription' => $request->SeoDescription,
+            'SeoTitle' => $request->SeoTitle
+        ]);
+        AttributespricesModels::create([
+            'Active' => 1,
+            'Price' => $request->Price,
+            'ProductID' => $ProductNewId->Id
+        ]);
+        return redirect()->route('admin.Products.index');
     }
 
     /**
@@ -40,7 +69,6 @@ class ProductsController extends Controller
     {
         $product = ProductsModels::find($id);
         return $product;
-
     }
 
     /**
@@ -48,8 +76,14 @@ class ProductsController extends Controller
      */
     public function edit(string $id)
     {
-        $product = ProductsModels::find($id);
-        return view('admin/Product/update',['product' => $product]);
+        $product = DB::table('products')
+            ->join('attributesprices', 'attributesprices.ProductID', '=', 'products.Id')
+            ->join('producttranslation', 'producttranslation.ProductId', '=', 'products.Id')    
+            ->select('products.*','producttranslation.Description','producttranslation.Details','producttranslation.LanguageId','producttranslation.Name',
+            'producttranslation.SeoAlias','producttranslation.SeoDescription','producttranslation.SeoTitle','attributesprices.Price')
+            ->where('products.Id','=',$id)
+            ->get();
+        return view('admin/Product/update', ['product' => $product]);
     }
 
     /**
@@ -57,19 +91,30 @@ class ProductsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $producttranslation = DB::table('producttranslation')
+            ->where('ProductId', $id)
+            ->where('LanguageId', 'vi-VN')->update([
+                'Name' => $request->Name,
+                'Details' => $request->Details,
+                'Description' => $request->Description,
+                'SeoDescription' => $request->SeoDescription,
+                'SeoTitle' => $request->SeoTitle,
+                'SeoAlias' => $request->SeoAlias,
+                'LanguageId' => $request->LanguageId
+            ]);
+        
+
+        $attributesprices = DB::table('attributesprices')->where('ProductID', $id)->update([
+            'Price' => $request->Price
+        ]);
+        
         ProductsModels::find($id)->update([
-        'Active' => $request->Active,
-        'BestSeller' => $request->BestSeller,
-        'CatID' => $request->CatID,
-        'DateCreated' => $request->DateCreated,
-        'DateModified' => $request->DateModified,
-        'Discount' => $request->Discount,
-        'HomeFlag' => $request->HomeFlag,
-        'Id' => $request->Id,
-        'SeoAlias' => $request->SeoAlias,
-        'Title' => $request->Title,
-        'UnitsInStock'=> $request->UnitsInStock]);
-        return redirect()-> route('admin.Products.index');
+            'CatID' => $request->CatID,
+            'Discount' => $request->Discount,
+            'UnitsInStock' => $request->UnitsInStock,
+            'Title' => $request->Title
+        ]);
+        return redirect()->route('admin.Products.index');
     }
 
     /**
@@ -77,7 +122,10 @@ class ProductsController extends Controller
      */
     public function destroy(string $id)
     {
+        $producttranslation = DB::table('producttranslation')->where('ProductId', $id)
+            ->where('LanguageId', 'vi-VN')->delete();
+        $attributesprices = DB::table('attributesprices')->where('ProductID', $id)->delete();
         ProductsModels::find($id)->delete();
-        return redirect()-> route('admin.Products.index');
+        return redirect()->route('admin.Products.index');
     }
 }

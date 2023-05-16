@@ -18,43 +18,16 @@
                             <h3>Thêm sản phẩm</h3>
                         </div>
                         <div class="col-md-6 ">
-                            <a href="{{route('admin.Products.index')}}" class="btn btn-primary" style="float: right;">Ve trang chu</a>
+                            <a href="{{route('admin.Products.index')}}" class="btn btn-primary" style="float: right;">Về Trang Chủ</a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <form action="{{route('admin.Products.store')}}" method="post">
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <strong>Trạng thái</strong>
-                                <input type="text" name="Active" class="form-control" placeholder="Trạng thái sản phẩm">
-                            </div>
-                            <div class="form-group">
-                                <strong>Bán chạy</strong>
-                                <input type="text" name="BestSellers" class="form-control" placeholder="Có là sản phẩm bán chạy không ?">
-                            </div>
-
-
-                        </div>
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <strong>Mã loại sản phẩm</strong>
                                 <input type="text" name="CatID" class="form-control" placeholder="Nhập mã loại sản phẩm">
-                            </div>
-                            <div class="form-group">
-                                <strong>Ngày tạo : </strong>
-                                <input type="date" value="<?php echo date("Y-m-d"); ?>" name="DateCreated" class="form-control">
-                            </div>
-
-
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <strong>Ngày sửa : </strong>
-                                <input type="date"  name="DateModifed" class="form-control">
                             </div>
                             <div class="form-group">
                                 <strong>Giảm giá</strong>
@@ -64,25 +37,66 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <strong>Hiển thị trang chủ : </strong>
-                                <input type="text" name="HomeFlag" class="form-control" placeholder="Có hiển thị sản phẩm này trên trang chủ không ?">
+                                <strong>Số lượng còn lại </strong>
+                                <input type="text" name="UnitsInStock" class="form-control" placeholder="Số lượng còn lại ?">
                             </div>
                             <div class="form-group">
-                                <strong>Tiêu đề quảng cáo : </strong>
-                                <input type="text" name="SeoAlias" class="form-control" placeholder="Tiêu đề để sử dụng quảng cáo sản phẩm ?">
+                                <strong>Tên sản phẩm</strong>
+                                <input type="text" name="Name" class="form-control" placeholder="Nhập tên sản phẩm ?">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <strong>Tiêu đề sản phẩm</strong>
-                                <input type="text" name="Title" class="form-control" placeholder="Nhập tiêu đề">
+                                <strong>Chi tiết sản phẩm </strong>
+                                <input type="text" name="Details" class="form-control" placeholder="Chi tiết sản phẩm ?">
                             </div>
                             <div class="form-group">
-                                <strong>Số lượng còn lại </strong>
-                                <input type="text" name="UnitsInStock" class="form-control" placeholder="Số lượng còn lại ?">
+                                <strong>Mô tả sản phẩm</strong>
+                                <input type="text" name="Description" class="form-control" placeholder="Mô tả sản phẩm ?">
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <strong>Mô tả ngắn </strong>
+                                <input type="text" name="SeoDescription" class="form-control" placeholder="Chi tiết sản phẩm ?">
+                            </div>
+                            <div class="form-group">
+                                <strong>Tiêu đề</strong>
+                                <input type="text" name="Title" class="form-control" placeholder="Mô tả sản phẩm ?">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <strong>Tiêu đề ngắn</strong>
+                                <input type="text" name="SeoTitle" class="form-control" placeholder="Mô tả tiêu đề ngắn ?">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <strong>Ngôn ngữ </strong>
+                                <input type="text" name="LanguageId" class="form-control" placeholder="Chi tiết sản phẩm ?">
+                            </div>
+                            <div class="form-group">
+                                <strong>Tên gọi ngắn sản phẩm</strong>
+                                <input type="text" name="SeoAlias" class="form-control" placeholder="Mô tả sản phẩm ?">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <strong>Giá </strong>
+                                <input type="text" name="Price" class="form-control" placeholder="Chi tiết sản phẩm ?">
+                            </div>
+                            <div class="form-group">
+                                <strong>Hình ảnh</strong>
+                                <input type="text" name="ThumbnailImage" class="form-control" placeholder="Mô tả sản phẩm ?">
+                            </div>
+                        </div>
+
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <button type="submit" class="btn btn-success mt-2">Lưu</button>
                     </form>

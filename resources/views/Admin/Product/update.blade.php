@@ -23,62 +23,71 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.Products.update').'/'.$product->Id}}" method="post">
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <strong>Trạng thái</strong>
-                                <input value="{{$product->Active}}" type="text" name="Active" class="form-control" placeholder="Trạng thái sản phẩm">
-                            </div>
-                            <div class="form-group">
-                                <strong>Bán chạy</strong>
-                                <input value="{{$product->BestSellers}}" type="text" name="BestSellers" class="form-control" placeholder="Có là sản phẩm bán chạy không ?">
-                            </div>
-
-
-                        </div>
+                    <form action="{{route('admin.Products.update').'/'.$product[0]->Id}}" method="post">
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <strong>Mã loại sản phẩm</strong>
-                                <input value="{{$product->CatID}}" type="text" name="CatID" class="form-control" placeholder="Nhập mã loại sản phẩm">
-                            </div>
-                            <div class="form-group">
-                                <strong>Ngày tạo : </strong>
-                                <input value="<?php echo date("Y-m-d"); ?>" type="date"  name="DateCreated" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <strong>Ngày sửa : </strong>
-                                <input value="<?php echo date("Y-m-d"); ?>" type="date"  name="DateModifed" class="form-control">
+                                <input value="{{$product[0]->CatID}}" type="text" name="CatID" class="form-control" placeholder="Trạng thái sản phẩm">
                             </div>
                             <div class="form-group">
                                 <strong>Giảm giá</strong>
-                                <input value="{{$product->Discount}}" type="text" name="Discount" class="form-control" placeholder="Sản phẩm này có giảm giá không ?">
+                                <input value="{{$product[0]->Discount}}" type="text" name="Discount" class="form-control" placeholder="Có là sản phẩm bán chạy không ?">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <strong>Hiển thị trang chủ : </strong>
-                                <input value="{{$product->HomeFlag}}" type="text" name="HomeFlag" class="form-control" placeholder="Có hiển thị sản phẩm này trên trang chủ không ?">
+                                <strong>Số lượng còn lại</strong>
+                                <input value="{{$product[0]->UnitsInStock}}" type="text" name="UnitsInStock" class="form-control" placeholder="Nhập mã loại sản phẩm">
                             </div>
                             <div class="form-group">
-                                <strong>Tiêu đề quảng cáo : </strong>
-                                <input value="{{$product->SeoAlias}}" type="text" name="SeoAlias" class="form-control" placeholder="Tiêu đề để sử dụng quảng cáo sản phẩm ?">
+                                <strong>Tên sản phẩm </strong>
+                                <input value="{{$product[0]->Name}}" type="text" name="Name" class="form-control" placeholder="Nhập mã loại sản phẩm">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <strong>Tiêu đề sản phẩm</strong>
-                                <input value="{{$product->Title}}" type="text" name="Title" class="form-control" placeholder="Nhập tiêu đề">
+                                <strong>Chi tiết sản phẩm </strong>
+                                <input value="{{$product[0]->Details}}" type="text" name="Details" class="form-control" placeholder="Nhập mã loại sản phẩm">
                             </div>
                             <div class="form-group">
-                                <strong>Số lượng còn lại </strong>
-                                <input value="{{$product->UnitsInStock}}" type="text" name="UnitsInStock" class="form-control" placeholder="Số lượng còn lại ?">
+                                <strong>Mô tả sản phẩm</strong>
+                                <input value="{{$product[0]->Description}}" type="text" name="Description" class="form-control" placeholder="Sản phẩm này có giảm giá không ?">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <strong>Mô tả ngắn </strong>
+                                <input value="{{$product[0]->SeoDescription}}" type="text" name="SeoDescription" class="form-control" placeholder="Có hiển thị sản phẩm này trên trang chủ không ?">
+                            </div>
+                            <div class="form-group">
+                                <strong>Tiêu đề </strong>
+                                <input value="{{$product[0]->Title}}" type="text" name="Title" class="form-control" placeholder="Tiêu đề để sử dụng quảng cáo sản phẩm ?">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <strong>Tiêu đề ngắn</strong>
+                                <input value="{{$product[0]->SeoTitle}}" type="text" name="SeoTitle" class="form-control" placeholder="Nhập tiêu đề">
+                            </div>
+                            <div class="form-group">
+                                <strong>Tên gọi ngắn </strong>
+                                <input value="{{$product[0]->SeoAlias}}" type="text" name="SeoAlias" class="form-control" placeholder="Số lượng còn lại ?">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <strong>Ngôn ngữ</strong>
+                                <input value="{{$product[0]->LanguageId}}" type="text" name="LanguageId" class="form-control" placeholder="Nhập tiêu đề">
+                            </div>
+                            <div class="form-group">
+                                <strong>Giá </strong>
+                                <input value="{{$product[0]->Price}}" type="text" name="Price" class="form-control" placeholder="Số lượng còn lại ?">
                             </div>
                         </div>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">

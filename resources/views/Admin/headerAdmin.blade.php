@@ -1,7 +1,7 @@
 <!-- Header START -->
 <div class="header">
                 <div class="logo logo-dark">
-                    <a href="index.html">
+                    <a href="{{route('homeAdmin')}}">
                         <img src="/admin/app/assets/images/logo/logo.png" alt="Logo">
                         <img class="logo-fold" src="/admin/app/assets/images/logo/logo-fold.png" alt="Logo">
                     </a>
@@ -166,29 +166,12 @@
                 <div class="side-nav-inner">
                     <ul class="side-nav-menu scrollable">
                         <li class="nav-item dropdown open">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
+                            <a class="dropdown-toggle" href="{{route('admin.Products.index')}}">
                                 <span class="icon-holder">
                                     <i class="anticon anticon-dashboard"></i>
                                 </span>
-                                <span class="title">Dashboard</span>
-                                <span class="arrow">
-                                    <i class="arrow-icon"></i>
-                                </span>
+                                <span class="title">Products</span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li class="active">
-                                    <a href="index.html">Default</a>
-                                </li>
-                                <li>
-                                    <a href="index-crm.html">CRM</a>
-                                </li>
-                                <li>
-                                    <a href="index-e-commerce.html">E-commerce</a>
-                                </li>
-                                <li>
-                                    <a href="index-projects.html">Projects</a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="javascript:void(0);">
