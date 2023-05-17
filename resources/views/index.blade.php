@@ -100,7 +100,7 @@
                                 <div class="product-item">
                                     <div class="product-img img-zoom-effect">
                                         <a href="single-product.html">
-                                            <img class="img-full" src="/webApp/assets/images/{{$datas->ImagePath}}" alt="Product Images">
+                                            <img class="img-full" src="{{ asset('storage/'.$datas->ImagePath) }}" alt="Product Images">
                                         </a>
                                         <div class="product-add-action">
                                             <ul>

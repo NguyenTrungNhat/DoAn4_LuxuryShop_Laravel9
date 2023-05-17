@@ -15,10 +15,10 @@
                 <div class="card-header" style="margin-top: 15px;">
                     <div class="row">
                         <div class="col-md-6 ">
-                            <h3>Danh sách sản phẩm</h3>
+                            <h3>Danh sách ảnh sản phẩm</h3>
                         </div>
                         <div class="col-md-6 ">
-                            <a href="{{route('admin.Products.create')}}" class="btn btn-primary" style="float: right;">Thêm mới</a>
+                            <a href="{{route('admin.ListImageProduct.create')}}" class="btn btn-primary" style="float: right;">Thêm mới</a>
                         </div>
                     </div>
                 </div>
@@ -31,35 +31,32 @@
                     <table  id="data-table" class="table" style="overflow-y:scroll">
                         <thead>
                             <tr>
+                                <th>ListProductImageID</th>
                                 <th>ProductID</th>
-                                <th>CatID</th>
-                                <th>Discount</th>
+                                <th>Caption</th>
                                 <th>DateCreated</th>
                                 <th>DateModified</th>
-                                <th>BestSellers</th>
-                                <th>HomeFlag</th>
-                                <th>Title</th>
-                                <th>UnitsInStock</th>
-                                <th>Active</th>
+                                <th>IsDefault</th>
+                                <th>SortOrder</th>
+                                <th>Image</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($Products as $product)
+                            @foreach($productImage  as $ProductImage)
                             <tr>
-                                <td>{{$product->Id}}</td>
-                                <td>{{$product->CatID}}</td>
-                                <td>{{$product->Discount}}</td>
-                                <td>{{$product->CREATED_AT}}</td>
-                                <td>{{$product->UPDATED_AT}}</td>
-                                <td>{{$product->BestSellers}}</td>
-                                <td>{{$product->HomeFlag}}</td>
-                                <td>{{$product->Title}}</td>
-                                <td>{{$product->UnitsInStock}}</td>
-                                <td>{{$product->Active}}</td>
+                                <td>{{$ProductImage->Id}}</td>
+                                <td>{{$ProductImage->ProductID}}</td>
+                                <td>{{$ProductImage->Caption}}</td>
+                                <td>{{$ProductImage->CREATED_AT}}</td>
+                                <td>{{$ProductImage->UPDATED_AT}}</td>
+                                <td>{{$ProductImage->IsDefault}}</td>
+                                <td>{{$ProductImage->SortOrder}}</td>
                                 <td>
-                                    <a href="{{route('admin.Products.edit').'/'.$product->Id}}" class="btn btn-infor">Sửa</a>
-                                    <a href="{{route('admin.Products.delete').'/'.$product->Id}}" class="btn btn-danger">Xóa</a>
+                                        <img style="width: 100px; height: 100px;" src="{{ asset('storage/'.$ProductImage->ImagePath) }}" alt="">
+                                    </td>
+                                <td>
+                                <a href="{{route('admin.ListImageProduct.delete').'/'.$ProductImage->Id}}" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>
                             @endforeach

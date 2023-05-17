@@ -17,9 +17,6 @@
                         <div class="col-md-6 ">
                             <h3>Danh sách sản phẩm</h3>
                         </div>
-                        <div class="col-md-6 ">
-                            <a href="{{route('admin.Products.create')}}" class="btn btn-primary" style="float: right;">Thêm mới</a>
-                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -33,13 +30,7 @@
                             <tr>
                                 <th>ProductID</th>
                                 <th>CatID</th>
-                                <th>Discount</th>
-                                <th>DateCreated</th>
-                                <th>DateModified</th>
-                                <th>BestSellers</th>
-                                <th>HomeFlag</th>
                                 <th>Title</th>
-                                <th>UnitsInStock</th>
                                 <th>Active</th>
                                 <th></th>
                             </tr>
@@ -49,17 +40,10 @@
                             <tr>
                                 <td>{{$product->Id}}</td>
                                 <td>{{$product->CatID}}</td>
-                                <td>{{$product->Discount}}</td>
-                                <td>{{$product->CREATED_AT}}</td>
-                                <td>{{$product->UPDATED_AT}}</td>
-                                <td>{{$product->BestSellers}}</td>
-                                <td>{{$product->HomeFlag}}</td>
                                 <td>{{$product->Title}}</td>
-                                <td>{{$product->UnitsInStock}}</td>
                                 <td>{{$product->Active}}</td>
                                 <td>
-                                    <a href="{{route('admin.Products.edit').'/'.$product->Id}}" class="btn btn-infor">Sửa</a>
-                                    <a href="{{route('admin.Products.delete').'/'.$product->Id}}" class="btn btn-danger">Xóa</a>
+                                    <a href="{{route('admin.ListImageProduct.edit').'/'.$product->Id}}" class="btn btn-infor">Sửa</a>
                                 </td>
                             </tr>
                             @endforeach
