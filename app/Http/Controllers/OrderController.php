@@ -4,82 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProductsModels;
-use App\Models\ProducttranslationModels;
-use App\Models\AttributespricesModels;
-use App\Models\ListImageProductModels;
+use App\Models\Orders;
+use App\Models\OrderDetails;
 use Illuminate\Support\Facades\DB;
 
-class ProductsController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = ProductsModels::all();
-        return view('/admin/Product/product', ['Products' => $products]);
+        $orders = Orders::all();
+        return view('/admin/Orders/order', ['orders' => $orders]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function detail(string $id)
     {
-        return view('/admin/Product/create');
+        $orders = Orders::find($id);
+        $orderDetails = OrderDetails::where('OrderID',$id)->get();
+        return view('/admin/Orders/orderDetail', ['orders' => $orders,'orderDetails' => $orderDetails]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $Path = $request->file('ImageFile')->store('public/Products');
-        ProductsModels::create([
-            'Active' => 1,
-            'BestSellers' => 0,
-            'CatID' => $request->CatID,
-            'Discount' => 0,
-            'HomeFlag' => 0,
-            'SeoAlias' => $request->SeoAlias,
-            'Title' => $request->Title,
-            'UnitsInStock' => $request->UnitsInStock,
-        ]);
-        $ProductNewId = ProductsModels::latest()->first();
-        ProducttranslationModels::create([
-            'Description' => $request->Description,
-            'Details' => $request->Details,
-            'LanguageId' => $request->LanguageId,
-            'Name' => $request->Name,
-            'ProductId' => $ProductNewId->Id,
-            'SeoAlias' => $request->SeoAlias,
-            'SeoDescription' => $request->SeoDescription,
-            'SeoTitle' => $request->SeoTitle
-        ]);
-        AttributespricesModels::create([
-            'Active' => 1,
-            'Price' => $request->Price,
-            'ProductID' => $ProductNewId->Id
-        ]);
-        ListImageProductModels::create([
-            'ProductID' => $ProductNewId->Id,
-            'ImagePath' => substr($Path,7,strlen($Path)),
-            'Caption' => 'Thumbnail Image',
-            'IsDefault' => 1,
-            'SortOrder' => 1
-        ]);
-
-        return redirect()->route('admin.Products.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $product = ProductsModels::find($id);
-        return $product;
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -137,6 +82,4 @@ class ProductsController extends Controller
         ProductsModels::find($id)->delete();
         return redirect()->route('admin.Products.index');
     }
-
-    
 }

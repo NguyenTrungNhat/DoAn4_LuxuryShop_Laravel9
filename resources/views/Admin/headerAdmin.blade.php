@@ -182,41 +182,12 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
+                            <a class="dropdown-toggle" href="{{route('admin.Orders.index')}}">
                                 <span class="icon-holder">
 									<i class="anticon anticon-build"></i>
 								</span>
-                                <span class="title">UI Elements</span>
-                                <span class="arrow">
-									<i class="arrow-icon"></i>
-								</span>
+                                <span class="title">Order</span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="avatar.html">Avatar</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alert</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badge</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="cards.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html">Icons</a>
-                                </li>
-                                <li>
-                                    <a href="lists.html">Lists</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="javascript:void(0);">
