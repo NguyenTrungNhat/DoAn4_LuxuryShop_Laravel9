@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductsModels;
 use App\Models\ProducttranslationModels;
 use App\Models\AttributespricesModels;
+use App\Models\ListImageProductModels;
 use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
@@ -32,7 +33,7 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+        $Path = $request->file('ImageFile')->store('public/Products');
         ProductsModels::create([
             'Active' => 1,
             'BestSellers' => 0,
@@ -59,6 +60,14 @@ class ProductsController extends Controller
             'Price' => $request->Price,
             'ProductID' => $ProductNewId->Id
         ]);
+        ListImageProductModels::create([
+            'ProductID' => $ProductNewId->Id,
+            'ImagePath' => substr($Path,7,strlen($Path)),
+            'Caption' => 'Thumbnail Image',
+            'IsDefault' => 1,
+            'SortOrder' => 1
+        ]);
+
         return redirect()->route('admin.Products.index');
     }
 

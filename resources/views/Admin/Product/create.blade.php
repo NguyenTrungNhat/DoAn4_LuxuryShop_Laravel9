@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.Products.store')}}" method="post">
+                    <form action="{{route('admin.Products.store')}}" method="post" enctype="multipart/form-data">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <strong>Mã loại sản phẩm</strong>
@@ -60,11 +60,11 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <strong>Mô tả ngắn </strong>
-                                <input type="text" name="SeoDescription" class="form-control" placeholder="Chi tiết sản phẩm ?">
+                                <input type="text" name="SeoDescription" class="form-control" placeholder="Mô tả ngắn sản phẩm ?">
                             </div>
                             <div class="form-group">
                                 <strong>Tiêu đề</strong>
-                                <input type="text" name="Title" class="form-control" placeholder="Mô tả sản phẩm ?">
+                                <input type="text" name="Title" class="form-control" placeholder="Mô tả tiêu đề sản phẩm ?">
                             </div>
                         </div>
 
@@ -78,22 +78,22 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <strong>Ngôn ngữ </strong>
-                                <input type="text" name="LanguageId" class="form-control" placeholder="Chi tiết sản phẩm ?">
+                                <input type="text" name="LanguageId" class="form-control" placeholder="Ngôn ngữ sản phẩm ?">
                             </div>
                             <div class="form-group">
                                 <strong>Tên gọi ngắn sản phẩm</strong>
-                                <input type="text" name="SeoAlias" class="form-control" placeholder="Mô tả sản phẩm ?">
+                                <input type="text" name="SeoAlias" class="form-control" placeholder="Tên gọi ngắn sản phẩm ?">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <strong>Giá </strong>
-                                <input type="text" name="Price" class="form-control" placeholder="Chi tiết sản phẩm ?">
+                                <input type="text" name="Price" class="form-control" placeholder="Giá sản phẩm ?">
                             </div>
                             <div class="form-group">
                                 <strong>Hình ảnh</strong>
-                                <input type="text" name="ThumbnailImage" class="form-control" placeholder="Mô tả sản phẩm ?">
+                                <input type="file" name="ImageFile" class="form-control">
                             </div>
                         </div>
 

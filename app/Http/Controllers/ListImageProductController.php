@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\TrimStrings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\ListImageProductModels;
@@ -15,15 +16,22 @@ class ListImageProductController extends Controller
         return view('/admin/ListImageProduct/listImageProduct', ['Products' => $products]);
     }
 
-    public function create()
+    public function create(string $id)
     {
-        return view('/admin/ListImageProduct/createImageProduct');
+        return view('/admin/ListImageProduct/createImageProduct',['productID' => $id]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, string $id)
     {
-        $Path = $request->file('ImageFile')->store('Image/Products');
-        dd($Path);
+        $Path = $request->file('ImageFile')->store('public/Products');
+        ListImageProductModels::create([
+            'ProductID' => $id,
+            'ImagePath' => substr($Path,7,strlen($Path)),
+            'Caption' => $request->Caption,
+            'IsDefault' => $request->IsDefault,
+            'SortOrder' => $request->SortOrder
+        ]);
+        return redirect('/admin/ListImageProduct/edit/'.$id);
     }
 
     public function edit(string $id)
@@ -32,7 +40,7 @@ class ListImageProductController extends Controller
             ->select('listproductimage.*')
             ->where('listproductimage.ProductID','=',$id)
             ->get();
-        return view('admin/ListImageProduct/listImageProductDetail', ['productImage' => $productImage]);
+        return view('admin/ListImageProduct/listImageProductDetail', ['productImage' => $productImage,'productID' => $id]);
     }
 
     public function destroy(string $id)

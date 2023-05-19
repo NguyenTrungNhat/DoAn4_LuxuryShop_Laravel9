@@ -44,8 +44,8 @@ Route::controller(App\Http\Controllers\ProductsController::class)->group(functio
 
 Route::controller(App\Http\Controllers\ListImageProductController::class)->group(function(){
     Route::get('/admin/ListImageProduct/index','index')->name('admin.ListImageProduct.index'); 
-    Route::get('/admin/ListImageProduct/create','create')->name('admin.ListImageProduct.create'); 
-    Route::post('/admin/ListImageProduct/store','store')->name('admin.ListImageProduct.store');  
+    Route::get('/admin/ListImageProduct/create/{id?}','create')->name('admin.ListImageProduct.create'); 
+    Route::post('/admin/ListImageProduct/store/{id?}','store')->name('admin.ListImageProduct.store');  
     Route::get('/admin/ListImageProduct/edit/{id?}','edit')->name('admin.ListImageProduct.edit'); 
     Route::get('/admin/ListImageProduct/delete/{id?}','destroy')->name('admin.ListImageProduct.delete');   
 });

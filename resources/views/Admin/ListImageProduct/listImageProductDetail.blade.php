@@ -18,7 +18,7 @@
                             <h3>Danh sách ảnh sản phẩm</h3>
                         </div>
                         <div class="col-md-6 ">
-                            <a href="{{route('admin.ListImageProduct.create')}}" class="btn btn-primary" style="float: right;">Thêm mới</a>
+                            <a href="{{route('admin.ListImageProduct.create').'/'.$productID}}" class="btn btn-primary" style="float: right;">Thêm mới</a>
                         </div>
                     </div>
                 </div>

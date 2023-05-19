@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.ListImageProduct.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.ListImageProduct.store').'/'.$productID}}" method="post" enctype="multipart/form-data">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <strong>Tiêu đề</strong>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                                 <strong>Hình ảnh</strong>
-                                <input type="file" name="ImageFile" class="form-control" placeholder="Nhập tên sản phẩm ?">
+                                <input type="file" name="ImageFile" class="form-control">
                             </div>
                         </div>
 
