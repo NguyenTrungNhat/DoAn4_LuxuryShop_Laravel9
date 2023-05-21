@@ -110,27 +110,25 @@
                             <nav class="main-nav">
                                 <ul>
                                     <li class="drop-holder">
-                                        <a href="javascript:void(0)">Home
-                                            
-                                        </a>
+                                        <a href="{{route('home')}}">Home</a>
                                     </li>
                                     <li>
-                                        <a href="about.html">About</a>
+                                        <a href="{{route('about').'/'.$languageId}}">About</a>
                                     </li>
                                     <li class="megamenu-holder">
                                         <a href="{{route('categories')}}">Shop
                                         </a>
                                     </li>
                                     <li class="drop-holder">
-                                        <a href="javascript:void(0)">Pages
+                                        <a href="{{route('pages').'/'.$languageId}}">Pages
                                         </a>
                                     </li>
                                     <li class="drop-holder">
-                                        <a href="javascript:void(0)">Blog
+                                        <a href="{{route('blog').'/'.$languageId}}">Blog
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact</a>
+                                        <a href="{{route('contact').'/'.$languageId}}">Contact</a>
                                     </li>
                                 </ul>
                             </nav>

@@ -23,7 +23,8 @@ class OrderController extends Controller
     {
         $orders = Orders::find($id);
         $orderDetails = OrderDetails::where('OrderID',$id)->get();
-        return view('/admin/Orders/orderDetail', ['orders' => $orders,'orderDetails' => $orderDetails]);
+        // dd($orderDetails[0]->Order->Customer);
+        return view('/admin/Orders/orderDetail', ['orders' => $orders,'orderDetails' => $orderDetails,'customer' => $orderDetails[0]]);
     }
     /**
      * Show the form for editing the specified resource.

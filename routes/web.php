@@ -52,8 +52,7 @@ Route::controller(App\Http\Controllers\ListImageProductController::class)->group
 
 Route::controller(App\Http\Controllers\OrderController::class)->group(function(){
     Route::get('/admin/Orders/index','index')->name('admin.Orders.index');   
-    Route::get('/admin/OrderDetails/index/{id?}','detail')->name('admin.OrderDetails.index');   
-    Route::get('/admin/Orders/getPt','getPt')->name('admin.Orders.getPt');   
+    Route::get('/admin/OrderDetails/index/{id?}','detail')->name('admin.OrderDetails.index');     
     Route::get('/admin/Orders/edit/{id?}','edit')->name('admin.Orders.edit');   
     Route::post('/admin/Orders/update/{id?}','update')->name('admin.Orders.update'); 
     Route::get('/admin/Orders/delete/{id?}','destroy')->name('admin.Orders.delete'); 

@@ -23,11 +23,12 @@ class HomeController extends Controller
             ->limit(8)
             ->get();
         //dd($data);
-        return view('index',['categories' => $category,'data' => $data]);
+        return view('index',['categories' => $category,'languageId'=> $language,'data' => $data]);
     }
 
-    public function categories(){
-        return view('categories');
+    public function categories($language = 'vi-VN'){
+        $category = CategoriesModels::where('LanguageId','=',$language)->get();
+        return view('categories',['categories' => $category,'languageId'=> $language]);
     }
 
     public function detail() {
@@ -46,22 +47,27 @@ class HomeController extends Controller
         return view('login');
     }
 
-    public function contact() {
-        return view('contact');
+    public function contact($language = 'vi-VN') {
+        $category = CategoriesModels::where('LanguageId','=',$language)->get();
+        return view('contact',['categories' => $category,'languageId'=> $language]);
     }
 
-    public function blog(){
-        return view('blog');
+    public function blog($language = 'vi-VN'){
+        $category = CategoriesModels::where('LanguageId','=',$language)->get();
+        return view('blog',['categories' => $category,'languageId'=> $language]);
     }
 
-    public function NotFound(){
-        return view('404');
+    public function NotFound($language = 'vi-VN'){
+        $category = CategoriesModels::where('LanguageId','=',$language)->get();
+        return view('404',['categories' => $category,'languageId'=> $language]);
     }
 
-    public function About(){
-        return view('about');
+    public function About($language = 'vi-VN'){
+        $category = CategoriesModels::where('LanguageId','=',$language)->get();
+        return view('about',['categories' => $category,'languageId'=> $language]);
     }
-    public function pages(){
-        return view('pages');
+    public function pages($language = 'vi-VN'){
+        $category = CategoriesModels::where('LanguageId','=',$language)->get();
+        return view('pages',['categories' => $category,'languageId'=> $language]);
     }
 }

@@ -14,7 +14,7 @@
                     <h2 class="sub-title mb-4">Page Cannot Be Found!</h2>
                     <p class="short-desc mb-7">Seems like nothing was found at this location. Try something else or you can go back to the homepage following the button below!</p>
                     <div class="button-wrap">
-                        <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="index.html">Back to home</a>
+                        <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="{{route('home')}}">Back to home</a>
                     </div>
                 </div>
             </div>

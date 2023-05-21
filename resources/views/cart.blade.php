@@ -72,7 +72,7 @@
                                         </td>
                                         <td class="product-thumbnail">
                                             <a href="javascript:void(0)">
-                                                <img style="width: 112px;height: 124px;" src="/webApp/assets/images/{{$item->attributes->image}}" alt="Cart Thumbnail">
+                                                <img style="width: 112px;height: 124px;" src="{{ asset('storage/'.$item->attributes->image) }}" alt="Cart Thumbnail">
                                             </a>
                                         </td>
                                         <td class="product-name"><a href="javascript:void(0)">{{ $item->name }}</a></td>

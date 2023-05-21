@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\Orders;
+
 
 
 class OrderDetails extends Model
@@ -25,4 +27,10 @@ class OrderDetails extends Model
     {
         return $this->hasOne(ProductsModels::class,'Id','ProductID');
     }
+
+    public function Order(): HasOne
+    {
+        return $this->hasOne(Orders::class,'Id','OrderID');
+    }
+    
 }
