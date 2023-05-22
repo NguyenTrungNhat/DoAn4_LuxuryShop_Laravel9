@@ -7,17 +7,17 @@
 
 <!-- Begin Main Content Area -->
 <main class="main-content">
-    <div class="breadcrumb-area breadcrumb-height" data-bg-image="/webApp/assets/images/breadcrumb/bg/1-1-1920x373.jpg">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="/webApp/assets/images/breadcrumb/bg/1920x373.png">
         <div class="container h-100">
             <div class="row h-100">
                 <div class="col-lg-12">
                     <div class="breadcrumb-item">
-                        <h2 class="breadcrumb-heading">Shop Layout</h2>
+                        <h2 class="breadcrumb-heading">Shop</h2>
                         <ul>
                             <li>
                                 <a href="index.html">Home <i class="pe-7s-angle-right"></i></a>
                             </li>
-                            <li>Shop List Left Sidebar</li>
+                            <li>Shop</li>
                         </ul>
                     </div>
                 </div>
@@ -38,27 +38,33 @@
                             </form>
                         </div>
                         <div class="widgets-area mb-9">
-                            <h2 class="widgets-title mb-5">Refine By</h2>
+                            <h2 class="widgets-title mb-5">Categories</h2>
                             <div class="widgets-item">
-                                <ul class="widgets-checkbox">
-                                    <li>
-                                        <input class="input-checkbox" type="checkbox" id="refine-item">
-                                        <label class="label-checkbox mb-0" for="refine-item">On Sale
-                                            <span>4</span>
+                                <ul style="margin: 0;
+                                        padding: 0;
+                                        list-style: none;">
+                                    <li style="margin-bottom: 25px;">
+                                        <label style="position: relative;
+                                                padding-left: 30px;
+                                                line-height: 1;
+                                                font-size: 14px;
+                                                font-weight: 400;
+                                                margin: 0; cursor: pointer;">All Products
+                                            <!-- <span></span> -->
                                         </label>
                                     </li>
-                                    <li>
-                                        <input class="input-checkbox" type="checkbox" id="refine-item-2" checked>
-                                        <label class="label-checkbox mb-0" for="refine-item-2">New
-                                            <span>4</span>
+                                    @foreach($categories as $ca)
+                                    <li style="margin-bottom: 25px;">
+                                        <label style="position: relative;
+                                                padding-left: 30px;
+                                                line-height: 1;
+                                                font-size: 14px;
+                                                font-weight: 400;
+                                                margin: 0; cursor: pointer;"><a href="{{route('productWithCategories').'/'.$ca->CatID.'/'.$languageId}}">{{$ca->Name}}</a>
+                                            <!-- <span></span> -->
                                         </label>
                                     </li>
-                                    <li>
-                                        <input class="input-checkbox" type="checkbox" id="refine-item-3">
-                                        <label class="label-checkbox mb-0" for="refine-item-3">In Stock
-                                            <span>4</span>
-                                        </label>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -130,7 +136,7 @@
                             </div>
                         </div>
                         <div class="widgets-area mb-9">
-                            <h2 class="widgets-title mb-5">Top Rated Products</h2>
+                            <h2 class="widgets-title mb-5">BestSeller Products</h2>
                             <div class="widgets-item">
                                 <div class="swiper-container widgets-list-slider">
                                     <div class="swiper-wrapper">
@@ -138,65 +144,13 @@
                                             <div class="product-list-item">
                                                 <div class="product-img img-zoom-effect">
                                                     <a href="single-product.html">
-                                                        <img class="img-full" src="/webApp/assets/images/product/small-size/1-1-112x124.jpg" alt="Product Images">
+                                                        <img class="img-full" src="" alt="Product Images">
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <a class="product-name" href="single-product.html">Dried Lemon Green</a>
+                                                    <a class="product-name" href="single-product.html"></a>
                                                     <div class="price-box pb-1">
-                                                        <span class="new-price">$80.00</span>
-                                                    </div>
-                                                    <div class="rating-box-wrap">
-                                                        <div class="rating-box">
-                                                            <ul>
-                                                                <li><i class="pe-7s-star"></i></li>
-                                                                <li><i class="pe-7s-star"></i></li>
-                                                                <li><i class="pe-7s-star"></i></li>
-                                                                <li><i class="pe-7s-star"></i></li>
-                                                                <li><i class="pe-7s-star"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="product-list-item">
-                                                <div class="product-img img-zoom-effect">
-                                                    <a href="single-product.html">
-                                                        <img class="img-full" src="/webApp/assets/images/product/small-size/1-2-112x124.jpg" alt="Product Images">
-                                                    </a>
-                                                </div>
-                                                <div class="product-content">
-                                                    <a class="product-name" href="single-product.html">Natural Coconut</a>
-                                                    <div class="price-box pb-1">
-                                                        <span class="new-price">$80.00</span>
-                                                    </div>
-                                                    <div class="rating-box-wrap">
-                                                        <div class="rating-box">
-                                                            <ul>
-                                                                <li><i class="pe-7s-star"></i></li>
-                                                                <li><i class="pe-7s-star"></i></li>
-                                                                <li><i class="pe-7s-star"></i></li>
-                                                                <li><i class="pe-7s-star"></i></li>
-                                                                <li><i class="pe-7s-star"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="product-list-item">
-                                                <div class="product-img img-zoom-effect">
-                                                    <a href="single-product.html">
-                                                        <img class="img-full" src="/webApp/assets/images/product/small-size/1-3-112x124.jpg" alt="Product Images">
-                                                    </a>
-                                                </div>
-                                                <div class="product-content">
-                                                    <a class="product-name" href="single-product.html">Black Peppepr Read</a>
-                                                    <div class="price-box pb-1">
-                                                        <span class="new-price">$80.00</span>
+                                                        <span class="new-price"></span>
                                                     </div>
                                                     <div class="rating-box-wrap">
                                                         <div class="rating-box">
@@ -246,12 +200,12 @@
                             <li class="product-view-wrap">
                                 <ul class="nav" role="tablist">
                                     <li class="grid-view" role="presentation">
-                                        <a id="grid-view-tab" data-bs-toggle="tab" href="#grid-view" role="tab" aria-selected="true">
+                                        <a class="active" id="grid-view-tab" data-bs-toggle="tab" href="#grid-view" role="tab" aria-selected="true">
                                             <i class="fa fa-th"></i>
                                         </a>
                                     </li>
                                     <li class="list-view" role="presentation">
-                                        <a class="active" id="list-view-tab" data-bs-toggle="tab" href="#list-view" role="tab" aria-selected="true">
+                                        <a id="list-view-tab" data-bs-toggle="tab" href="#list-view" role="tab" aria-selected="true">
                                             <i class="fa fa-th-list"></i>
                                         </a>
                                     </li>
@@ -273,142 +227,14 @@
                         </ul>
                     </div>
                     <div class="tab-content text-charcoal pt-8">
-                        <div class="tab-pane fade" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
+                        <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
                             <div class="product-grid-view row">
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <a class="product-name" href="single-product.html">Green Vegetable</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 pt-6 pt-sm-0">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <a class="product-name" href="single-product.html">Lemon Juice</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 pt-6 pt-lg-0">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <a class="product-name" href="single-product.html">Cow Milk & Meat</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @foreach($data as $datas)
                                 <div class="col-lg-4 col-sm-6 pt-6">
                                     <div class="product-item">
                                         <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
+                                            <a href="{{route('detail').'/'.$datas->Id.'/'.$languageId}}">
+                                                <img class="img-full" src="{{ asset('storage/'.$datas->ListImageProduct->first()->ImagePath) }}" alt="Product Images">
                                             </a>
                                             <div class="product-add-action">
                                                 <ul>
@@ -431,9 +257,12 @@
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <a class="product-name" href="single-product.html">Black Pepper Grains</a>
+                                            <a style="overflow: hidden;
+                                                    text-overflow: ellipsis;
+                                                    white-space: nowrap;
+                                                    width: 200px;" class="product-name" href="{{route('detail').'/'.$datas->Id.'/'.$languageId}}">{{$datas->ProductTranslation->where('LanguageId','=',$languageId)->first()->Name}}</a>
                                             <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
+                                                <span class="new-price">{{number_format($datas->AttributesPrice->Price)}}</span>
                                             </div>
                                             <div class="rating-box">
                                                 <ul>
@@ -447,450 +276,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-sm-6 pt-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <a class="product-name" href="single-product.html">Peanut Big Bean</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 pt-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <a class="product-name" href="single-product.html">Natural Coconut</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 pt-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <a class="product-name" href="single-product.html">Black Peppepr Read</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 pt-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <a class="product-name" href="single-product.html">Green Vegetable</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 pt-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-9-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <a class="product-name" href="single-product.html">Lemon Juice</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                        <div class="tab-pane fade show active" id="list-view" role="tabpanel" aria-labelledby="list-view-tab">
-                            <div class="product-list-view with-sidebar row">
+                        <div class="tab-pane fade" id="list-view" role="tabpanel" aria-labelledby="list-view-tab">
+                            <div class="product-list-view row">
                                 <div class="col-12">
                                     <div class="product-item">
                                         <div class="product-img img-zoom-effect">
                                             <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content align-self-center">
-                                            <a class="product-name pb-2" href="single-product.html">Cow Milk & Meat</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box pb-2">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="short-desc mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 pt-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content align-self-center">
-                                            <a class="product-name pb-2" href="single-product.html">Black Pepper Grains</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box pb-2">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="short-desc mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 pt-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content align-self-center">
-                                            <a class="product-name pb-2" href="single-product.html">Peanut Big Bean</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box pb-2">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="short-desc mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 pt-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content align-self-center">
-                                            <a class="product-name pb-2" href="single-product.html">Dried Lemon Green</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box pb-2">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="short-desc mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 pt-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
-                                            </a>
-                                            <div class="product-add-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <i class="pe-7s-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <i class="pe-7s-shuffle"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <i class="pe-7s-like"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-content align-self-center">
-                                            <a class="product-name pb-2" href="single-product.html">Natural Coconut</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">$80.00</span>
-                                            </div>
-                                            <div class="rating-box pb-2">
-                                                <ul>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                    <li><i class="pe-7s-star"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="short-desc mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 pt-6">
-                                    <div class="product-item">
-                                        <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
+                                                <img class="img-full" src="assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
                                             </a>
                                             <div class="product-add-action">
                                                 <ul>
@@ -934,7 +329,7 @@
                                     <div class="product-item">
                                         <div class="product-img img-zoom-effect">
                                             <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
+                                                <img class="img-full" src="assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
                                             </a>
                                             <div class="product-add-action">
                                                 <ul>
@@ -978,7 +373,7 @@
                                     <div class="product-item">
                                         <div class="product-img img-zoom-effect">
                                             <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                                <img class="img-full" src="assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
                                             </a>
                                             <div class="product-add-action">
                                                 <ul>
@@ -1022,7 +417,7 @@
                                     <div class="product-item">
                                         <div class="product-img img-zoom-effect">
                                             <a href="single-product.html">
-                                                <img class="img-full" src="/webApp/assets/images/product/medium-size/1-9-270x300.jpg" alt="Product Images">
+                                                <img class="img-full" src="assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
                                             </a>
                                             <div class="product-add-action">
                                                 <ul>
@@ -1062,6 +457,226 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-12 pt-6">
+                                    <div class="product-item">
+                                        <div class="product-img img-zoom-effect">
+                                            <a href="single-product.html">
+                                                <img class="img-full" src="assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
+                                            </a>
+                                            <div class="product-add-action">
+                                                <ul>
+                                                    <li>
+                                                        <a href="cart.html">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="compare.html">
+                                                            <i class="pe-7s-shuffle"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="wishlist.html">
+                                                            <i class="pe-7s-like"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-content align-self-center">
+                                            <a class="product-name pb-2" href="single-product.html">Black Pepper Grains</a>
+                                            <div class="price-box pb-1">
+                                                <span class="new-price">$80.00</span>
+                                            </div>
+                                            <div class="rating-box pb-2">
+                                                <ul>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                </ul>
+                                            </div>
+                                            <p class="short-desc mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 pt-6">
+                                    <div class="product-item">
+                                        <div class="product-img img-zoom-effect">
+                                            <a href="single-product.html">
+                                                <img class="img-full" src="assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
+                                            </a>
+                                            <div class="product-add-action">
+                                                <ul>
+                                                    <li>
+                                                        <a href="cart.html">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="compare.html">
+                                                            <i class="pe-7s-shuffle"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="wishlist.html">
+                                                            <i class="pe-7s-like"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-content align-self-center">
+                                            <a class="product-name pb-2" href="single-product.html">Peanut Big Bean</a>
+                                            <div class="price-box pb-1">
+                                                <span class="new-price">$80.00</span>
+                                            </div>
+                                            <div class="rating-box pb-2">
+                                                <ul>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                </ul>
+                                            </div>
+                                            <p class="short-desc mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 pt-6">
+                                    <div class="product-item">
+                                        <div class="product-img img-zoom-effect">
+                                            <a href="single-product.html">
+                                                <img class="img-full" src="assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
+                                            </a>
+                                            <div class="product-add-action">
+                                                <ul>
+                                                    <li>
+                                                        <a href="cart.html">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="compare.html">
+                                                            <i class="pe-7s-shuffle"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="wishlist.html">
+                                                            <i class="pe-7s-like"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-content align-self-center">
+                                            <a class="product-name pb-2" href="single-product.html">Dried Lemon Green</a>
+                                            <div class="price-box pb-1">
+                                                <span class="new-price">$80.00</span>
+                                            </div>
+                                            <div class="rating-box pb-2">
+                                                <ul>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                </ul>
+                                            </div>
+                                            <p class="short-desc mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 pt-6">
+                                    <div class="product-item">
+                                        <div class="product-img img-zoom-effect">
+                                            <a href="single-product.html">
+                                                <img class="img-full" src="assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                            </a>
+                                            <div class="product-add-action">
+                                                <ul>
+                                                    <li>
+                                                        <a href="cart.html">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="compare.html">
+                                                            <i class="pe-7s-shuffle"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="wishlist.html">
+                                                            <i class="pe-7s-like"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-content align-self-center">
+                                            <a class="product-name pb-2" href="single-product.html">Natural Coconut</a>
+                                            <div class="price-box pb-1">
+                                                <span class="new-price">$80.00</span>
+                                            </div>
+                                            <div class="rating-box pb-2">
+                                                <ul>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                </ul>
+                                            </div>
+                                            <p class="short-desc mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 pt-6">
+                                    <div class="product-item">
+                                        <div class="product-img img-zoom-effect">
+                                            <a href="single-product.html">
+                                                <img class="img-full" src="assets/images/product/medium-size/1-9-270x300.jpg" alt="Product Images">
+                                            </a>
+                                            <div class="product-add-action">
+                                                <ul>
+                                                    <li>
+                                                        <a href="cart.html">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="compare.html">
+                                                            <i class="pe-7s-shuffle"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="wishlist.html">
+                                                            <i class="pe-7s-like"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-content align-self-center">
+                                            <a class="product-name pb-2" href="single-product.html">Black Peppepr Read</a>
+                                            <div class="price-box pb-1">
+                                                <span class="new-price">$80.00</span>
+                                            </div>
+                                            <div class="rating-box pb-2">
+                                                <ul>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                    <li><i class="pe-7s-star"></i></li>
+                                                </ul>
+                                            </div>
+                                            <p class="short-desc mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1069,14 +684,13 @@
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
                                 <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
+                                    <a class="page-link" aria-label="Previous" style="cursor: pointer;">
                                         <span class="fa fa-chevron-left"></span>
                                     </a>
                                 </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li ng-repeat="page in totalPages" class="page-item"><a class="page-link" style="cursor: pointer;"></a></li>
                                 <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
+                                    <a class="page-link" aria-label="Next" style="cursor: pointer;">
                                         <span class="fa fa-chevron-right"></span>
                                     </a>
                                 </li>

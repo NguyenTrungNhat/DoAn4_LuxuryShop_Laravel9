@@ -14,7 +14,7 @@ class CartController extends Controller
     {
         $category = CategoriesModels::where('LanguageId','=','vi-VN')->get();
         $cartItems = \Cart::getContent();
-        return view('/cart',['categories' => $category],compact('cartItems'));
+        return view('/cart',['categories' => $category,'languageId'=> 'vi-VN'],compact('cartItems'));
     }
 
 

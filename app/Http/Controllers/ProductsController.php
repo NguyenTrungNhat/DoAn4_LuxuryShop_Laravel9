@@ -131,6 +131,7 @@ class ProductsController extends Controller
      */
     public function destroy(string $id)
     {
+        $attributesprices = DB::table('listproductimage')->where('ProductID', $id)->delete();
         $producttranslation = DB::table('producttranslation')->where('ProductId', $id)
             ->where('LanguageId', 'vi-VN')->delete();
         $attributesprices = DB::table('attributesprices')->where('ProductID', $id)->delete();

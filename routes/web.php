@@ -20,7 +20,8 @@ Route::get('/tmp', function () {
 Route::controller(App\Http\Controllers\HomeController::class)->group(function(){
     Route::get('/{languageId?}','index')->name('home');
     Route::get('/categories/{languageId?}','categories')->name('categories');
-    Route::get('/detail/{languageId?}','detail')->name('detail');
+    Route::get('/categories/{catID?}/{languageId?}','productWithCategories')->name('productWithCategories');
+    Route::get('/detail/{id?}/{languageId?}','detail')->name('detail');
     Route::get('/login/{languageId?}','login')->name('loging');
     Route::get('/contact/{languageId?}','contact')->name('contact');
     Route::get('/blog/{languageId?}','blog')->name('blog');

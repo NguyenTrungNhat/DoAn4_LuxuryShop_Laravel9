@@ -29,7 +29,7 @@ class ProductsModels extends Model
     ];
     public function ProductTranslation(): HasMany
     {
-        return $this->hasMany(ProducttranslationModels::class,'ProductId','Id')->where('LanguageId','=','vi-VN');
+        return $this->hasMany(ProducttranslationModels::class,'ProductId','Id');
     }
 
     public function AttributesPrice(): HasOne

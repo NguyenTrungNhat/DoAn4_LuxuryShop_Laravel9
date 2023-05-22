@@ -99,18 +99,18 @@
                             <div class="col-xl-3 col-lg-4 col-sm-6" style="margin-bottom: 40px;">
                                 <div class="product-item">
                                     <div class="product-img img-zoom-effect">
-                                        <a href="single-product.html">
-                                            <img class="img-full" src="{{ asset('storage/'.$datas->ImagePath) }}" alt="Product Images">
+                                        <a href="{{route('detail').'/'.$datas->Id.'/'.$languageId}}">
+                                            <img class="img-full" src="{{ asset('storage/'.$datas->ListImageProduct->first()->ImagePath) }}" alt="Product Images">
                                         </a>
                                         <div class="product-add-action">
                                             <ul>
                                                 <li>
                                                     <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
-                                                        <input type="hidden" value="{{ $datas->ProductId }}" name="id">
-                                                        <input type="hidden" value="{{ $datas->Name }}" name="name">
-                                                        <input type="hidden" value="{{ $datas->Price }}" name="price">
-                                                        <input type="hidden" value="{{ $datas->ImagePath }}" name="image">
+                                                        <input type="hidden" value="{{ $datas->Id }}" name="id">
+                                                        <input type="hidden" value="{{ $datas->ProductTranslation->where('LanguageId','=',$languageId)->first()->Name }}" name="name">
+                                                        <input type="hidden" value="{{ $datas->AttributesPrice->Price }}" name="price">
+                                                        <input type="hidden" value="{{ $datas->ListImageProduct->first()->ImagePath }}" name="image">
                                                         <input type="hidden" value="1" name="quantity">
                                                         <button class="buttonCart" style="background-color: #fff;
   width: 50px;
@@ -144,9 +144,9 @@
                                         <a style="overflow: hidden;
                                                 text-overflow: ellipsis;
                                                 white-space: nowrap;
-                                                width: 200px;" class="product-name" href="single-product.html">{{$datas->Name}}</a>
+                                                width: 200px;" class="product-name" href="single-product.html">{{$datas->ProductTranslation->where('LanguageId','=',$languageId)->first()->Name}}</a>
                                         <div class="price-box pb-1">
-                                            <span class="new-price">{{number_format($datas->Price)}}</span>
+                                            <span class="new-price">{{number_format($datas->AttributesPrice->Price)}}</span>
                                         </div>
                                         <div class="rating-box">
                                             <ul>

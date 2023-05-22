@@ -116,7 +116,7 @@
                                         <a href="{{route('about').'/'.$languageId}}">About</a>
                                     </li>
                                     <li class="megamenu-holder">
-                                        <a href="{{route('categories')}}">Shop
+                                        <a href="{{route('categories').'/'.$languageId}}">Shop
                                         </a>
                                     </li>
                                     <li class="drop-holder">

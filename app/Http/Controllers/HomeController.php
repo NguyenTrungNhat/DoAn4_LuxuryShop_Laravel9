@@ -13,26 +13,27 @@ class HomeController extends Controller
 {
     public function index($language = 'vi-VN'){
         $category = CategoriesModels::where('LanguageId','=',$language)->get();
-        //$products = ProducttranslationModels::where('LanguageId','=',$language)->get();
-        $data = DB::table('products')
-            ->join('attributesprices', 'attributesprices.ProductID', '=', 'products.Id')
-            ->join('producttranslation', 'producttranslation.ProductId', '=', 'products.Id')    
-            ->join('listproductimage', 'listproductimage.ProductID', '=', 'products.Id')
-            ->select('products.*','producttranslation.*','attributesprices.Price','listproductimage.ImagePath')
-            ->where('producttranslation.LanguageId','=',$language)
-            ->limit(8)
-            ->get();
-        //dd($data);
+        $data = ProductsModels::limit(8)->get();
         return view('index',['categories' => $category,'languageId'=> $language,'data' => $data]);
     }
 
     public function categories($language = 'vi-VN'){
         $category = CategoriesModels::where('LanguageId','=',$language)->get();
-        return view('categories',['categories' => $category,'languageId'=> $language]);
+        $data = ProductsModels::limit(9)->get();
+        return view('categories',['categories' => $category,'languageId'=> $language,'data' => $data]);
     }
 
-    public function detail() {
-        return view('detail');
+    public function productWithCategories($catID,$language = 'vi-VN'){
+        $category = CategoriesModels::where('LanguageId','=',$language)->get();
+        $data = ProductsModels::where('CatID','=',$catID)->limit(9)->get();
+        return view('categories',['categories' => $category,'languageId'=> $language,'data' => $data]);
+    }
+
+    public function detail($id,$language = 'vi-VN') {
+        $category = CategoriesModels::where('LanguageId','=',$language)->get();
+        $data = ProductsModels::where('Id','=',$id)->get();
+        $dataWithCat = ProductsModels::where('CatID','=',$data->first()->CatID)->limit(9)->get();
+        return view('detail',['categories' => $category,'languageId'=> $language,'data' => $data,'dataWithCat' => $dataWithCat]);
     }
 
     public function cart() {
