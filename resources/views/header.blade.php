@@ -8,12 +8,11 @@
                         <ul class="dropdown-wrap text-matterhorn">
                             <li class="dropdown">
                                 <button class="btn btn-link dropdown-toggle ht-btn" type="button" id="languageButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    English
+                                    {{$languageId}}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="languageButton">
-                                    <li><a class="dropdown-item" href="#">French</a></li>
-                                    <li><a class="dropdown-item" href="#">Italian</a></li>
-                                    <li><a class="dropdown-item" href="#">Spanish</a></li>
+                                    <li><a class="dropdown-item" href="{{route('home').'/'.'vi-VN'}}">vi-VN</a></li>
+                                    <li><a class="dropdown-item" href="{{route('home').'/'.'en-US'}}">en-US</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -84,9 +83,8 @@
                                     </a>
                                 </li>
                                 <li class="minicart-wrap me-3 me-lg-0">
-                                    <a href="#miniCart" class="minicart-btn toolbar-btn">
+                                    <a href="{{route('cart.list')}}" class="">
                                         <i class="pe-7s-shopbag"></i>
-                                        <span class="quantity">3</span>
                                     </a>
                                 </li>
                                 <li class="mobile-menu_wrap d-block d-lg-none">
@@ -174,7 +172,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButtonTwo">
                                 <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                                <li><a class="dropdown-item" href="login-register.html">Login | Register</a></li>
+                                <li><a class="dropdown-item" href="{{route('login').'/'.$languageId}}">Login | Register</a></li>
                             </ul>
                         </li>
                         <li>

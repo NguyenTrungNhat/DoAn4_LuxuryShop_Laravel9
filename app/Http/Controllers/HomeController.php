@@ -44,8 +44,9 @@ class HomeController extends Controller
         return view('checkout');
     }
 
-    public function login() {
-        return view('login');
+    public function login($language = 'vi-VN') {
+        $category = CategoriesModels::where('LanguageId','=',$language)->get();
+        return view('login',['categories' => $category,'languageId'=> $language]);
     }
 
     public function contact($language = 'vi-VN') {

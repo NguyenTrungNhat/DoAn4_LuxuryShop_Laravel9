@@ -33,7 +33,7 @@
                             <div class="swiper-wrapper">
                                 @foreach($data->first()->ListImageProduct as $listImg)
                                 <div class="swiper-slide">
-                                    <a   class="single-img gallery-popup">
+                                    <a class="single-img gallery-popup">
                                         <img class="img-full" src="{{ asset('storage/'.$listImg->ImagePath) }}" alt="Product Image">
                                     </a>
                                 </div>
@@ -45,7 +45,7 @@
                         <div class="swiper-container single-product-thumbs pt-6">
                             <div class="swiper-wrapper">
                                 @foreach($data->first()->ListImageProduct as $listImg)
-                                <a   class="swiper-slide">
+                                <a class="swiper-slide">
                                     <img class="img-full" src="{{ asset('storage/'.$listImg->ImagePath) }}" alt="Product Thumnail">
                                 </a>
                                 @endforeach
@@ -76,30 +76,31 @@
                         <p class="short-desc mb-6">{{$data->first()->ProductTranslation->first()->Details}}
                         </p>
                         <div class="selector-wrap color-option pb-2">
-                            <span>Color</span>
+                            <span>Size</span>
                             <select class="nice-select wide rounded-0">
                                 <option value="default">Choose an option</option>
-                                <option value="blue">Blue</option>
-                                <option value="green">Green</option>
-                                <option value="red">Red</option>
-                            </select>
-                        </div>
-                        <div class="selector-wrap pb-6">
-                            <span>Logo</span>
-                            <select class="nice-select wide rounded-0">
-                                <option value="default">Choose an option</option>
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
                             </select>
                         </div>
                         <ul class="quantity-with-btn pb-7">
-                            <li class="quantity">
+                            <!-- <li class="quantity">
                                 <div class="cart-plus-minus">
                                     <input class="cart-plus-minus-box" value="1" type="text">
                                 </div>
-                            </li>
+                            </li> -->
                             <li class="add-to-cart">
-                                <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0">Add to cart</a>
+                                <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" value="{{ $data->first()->Id }}" name="id">
+                                    <input type="hidden" value="{{ $data->first()->ProductTranslation->where('LanguageId','=',$languageId)->first()->Name }}" name="name">
+                                    <input type="hidden" value="{{ $data->first()->AttributesPrice->Price }}" name="price">
+                                    <input type="hidden" value="{{ $data->first()->ListImageProduct->first()->ImagePath }}" name="image">
+                                    <input type="hidden" value="1" name="quantity">
+                                    <button class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0">Add to cart</button>
+                                </form>
                             </li>
                             <li class="wishlist-btn-wrap">
                                 <a class="btn rounded-0" href="wishlist.html">

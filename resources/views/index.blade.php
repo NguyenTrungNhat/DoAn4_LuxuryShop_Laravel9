@@ -1925,7 +1925,7 @@
             <div class="col-lg-12">
                 <div class="swiper-container product-slider swiper-arrow with-radius border-issue">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
+                        <!-- <div class="swiper-slide">
                             <div class="product-item">
                                 <div class="product-img img-zoom-effect">
                                     <a href="single-product.html">
@@ -2096,7 +2096,73 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        @foreach($data as $datas)
+                            <div class="col-xl-3 col-lg-4 col-sm-6" style="margin-bottom: 40px;">
+                                <div class="product-item">
+                                    <div class="product-img img-zoom-effect">
+                                        <a href="{{route('detail').'/'.$datas->Id.'/'.$languageId}}">
+                                            <img class="img-full" src="{{ asset('storage/'.$datas->ListImageProduct->first()->ImagePath) }}" alt="Product Images">
+                                        </a>
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $datas->Id }}" name="id">
+                                                        <input type="hidden" value="{{ $datas->ProductTranslation->where('LanguageId','=',$languageId)->first()->Name }}" name="name">
+                                                        <input type="hidden" value="{{ $datas->AttributesPrice->Price }}" name="price">
+                                                        <input type="hidden" value="{{ $datas->ListImageProduct->first()->ImagePath }}" name="image">
+                                                        <input type="hidden" value="1" name="quantity">
+                                                        <button class="buttonCart" style="background-color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 53px;
+  text-align: center;
+  display: block;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border:none;">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </button>
+                                                    </form>
+
+                                                </li>
+                                                <li>
+                                                    <a href="compare.html">
+                                                        <i class="pe-7s-shuffle"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="wishlist.html">
+                                                        <i class="pe-7s-like"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <a style="overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                white-space: nowrap;
+                                                width: 200px;" class="product-name" href="single-product.html">{{$datas->ProductTranslation->where('LanguageId','=',$languageId)->first()->Name}}</a>
+                                        <div class="price-box pb-1">
+                                            <span class="new-price">{{number_format($datas->AttributesPrice->Price)}}</span>
+                                        </div>
+                                        <div class="rating-box">
+                                            <ul>
+                                                <li><i class="pe-7s-star"></i></li>
+                                                <li><i class="pe-7s-star"></i></li>
+                                                <li><i class="pe-7s-star"></i></li>
+                                                <li><i class="pe-7s-star"></i></li>
+                                                <li><i class="pe-7s-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-nav-wrap">
@@ -2172,7 +2238,7 @@
             <div class="col-lg-12">
                 <div class="swiper-container product-list-slider border-issue">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
+                        <!-- <div class="swiper-slide">
                             <div class="product-list-item">
                                 <div class="product-img img-zoom-effect">
                                     <a href="single-product.html">
@@ -2381,7 +2447,73 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        @foreach($data as $datas)
+                            <div class="col-xl-3 col-lg-4 col-sm-6" style="margin-bottom: 40px;">
+                                <div class="product-item">
+                                    <div class="product-img img-zoom-effect">
+                                        <a href="{{route('detail').'/'.$datas->Id.'/'.$languageId}}">
+                                            <img class="img-full" src="{{ asset('storage/'.$datas->ListImageProduct->first()->ImagePath) }}" alt="Product Images">
+                                        </a>
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $datas->Id }}" name="id">
+                                                        <input type="hidden" value="{{ $datas->ProductTranslation->where('LanguageId','=',$languageId)->first()->Name }}" name="name">
+                                                        <input type="hidden" value="{{ $datas->AttributesPrice->Price }}" name="price">
+                                                        <input type="hidden" value="{{ $datas->ListImageProduct->first()->ImagePath }}" name="image">
+                                                        <input type="hidden" value="1" name="quantity">
+                                                        <button class="buttonCart" style="background-color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 53px;
+  text-align: center;
+  display: block;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border:none;">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </button>
+                                                    </form>
+
+                                                </li>
+                                                <li>
+                                                    <a href="compare.html">
+                                                        <i class="pe-7s-shuffle"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="wishlist.html">
+                                                        <i class="pe-7s-like"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <a style="overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                white-space: nowrap;
+                                                width: 200px;" class="product-name" href="single-product.html">{{$datas->ProductTranslation->where('LanguageId','=',$languageId)->first()->Name}}</a>
+                                        <div class="price-box pb-1">
+                                            <span class="new-price">{{number_format($datas->AttributesPrice->Price)}}</span>
+                                        </div>
+                                        <div class="rating-box">
+                                            <ul>
+                                                <li><i class="pe-7s-star"></i></li>
+                                                <li><i class="pe-7s-star"></i></li>
+                                                <li><i class="pe-7s-star"></i></li>
+                                                <li><i class="pe-7s-star"></i></li>
+                                                <li><i class="pe-7s-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                     </div>
                     <!-- Add Arrows -->
                     <!-- <div class="swiper-button-next"></div>

@@ -6,7 +6,7 @@
 
 <!-- Begin Main Content Area -->
 <main class="main-content">
-    <div class="breadcrumb-area breadcrumb-height" data-bg-image="/wepApp/assets/images/breadcrumb/bg/1-1-1920x373.jpg">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="/webApp/assets/images/breadcrumb/bg/1920x373.png">
         <div class="container h-100">
             <div class="row h-100">
                 <div class="col-lg-12">
