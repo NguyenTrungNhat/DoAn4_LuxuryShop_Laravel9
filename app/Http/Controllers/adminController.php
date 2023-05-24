@@ -12,7 +12,11 @@ class adminController extends Controller
 {
     public function indexAdmin()
     {
-        return view('/Admin/adminIndex');
+        if (Auth::check()) { 
+            return view('/Admin/adminIndex');
+        }
+        return redirect()->route('loginAdmin'); 
+        
     }
 
     public function loginAdmin()

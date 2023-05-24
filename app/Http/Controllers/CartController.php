@@ -7,6 +7,8 @@ use App\Models\CategoriesModels;
 use App\Models\Customers;
 use App\Models\OrderDetails;
 use App\Models\Orders;
+use App\Models\ProductsModels;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -74,11 +76,32 @@ class CartController extends Controller
         $cartItems = \Cart::getContent();
         $category = CategoriesModels::where('LanguageId','=',$language)->get();
         // dd($cartItems);
-        return view('checkout', compact('cartItems'),['categories' => $category]);
+        return view('checkout', compact('cartItems'),['categories' => $category,'languageId'=> 'vi-VN']);
     }
 
     public function checkoutpost(Request $request)
     {
+        $cartItems = \Cart::getContent();
+        $checkQuantityProduct = true;
+        foreach($cartItems as $sp){
+            $productQuantity = DB::table('products')->where('Id', $sp->id)->get('UnitsInStock');
+            if(number_format($productQuantity->first()->UnitsInStock) < number_format($sp->quantity) ){
+                $checkQuantityProduct = false;
+            };
+        }
+        if($checkQuantityProduct){
+            foreach($cartItems as $sp){
+                $productQuantity = DB::table('products')->where('Id', $sp->id)->get('UnitsInStock');
+                $updateQuantity = DB::table('products')->where('Id', $sp->id)->update([
+                    'UnitsInStock' => (number_format($productQuantity->first()->UnitsInStock) - number_format($sp->quantity))
+                ]);
+            }
+        }else{
+            session()->flash('success','Sản phẩm trong kho không đủ !');
+            return redirect()->route('cart.list');
+        }
+        
+
         $customer = new Customers();
         $customer->Active = 1;
         $customer->FullName = $request->FullName;
@@ -98,9 +121,6 @@ class CartController extends Controller
         $dh->save();
         $OrderNewId = Orders::latest()->first();
 
-
-
-        $cartItems = \Cart::getContent();
         foreach($cartItems as $sp){
             $sp1 = new OrderDetails();
             $sp1->OrderID = $OrderNewId->Id;

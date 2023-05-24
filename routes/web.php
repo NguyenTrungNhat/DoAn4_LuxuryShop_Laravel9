@@ -31,7 +31,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function(){
 });
 
 Route::controller(App\Http\Controllers\adminController::class)->group(function(){
-    Route::get('/admin/Index','indexAdmin')->name('homeAdmin')->middleware('auth');  
+    Route::get('/admin/Index','indexAdmin')->name('homeAdmin');  
     Route::get('/admin/Login','loginAdmin')->name('loginAdmin');  
     Route::get('/admin/Register','registerAdmin')->name('registerAdmin');  
     Route::post('/admin/Register/store','store')->name('admin.User.Register.store');  
