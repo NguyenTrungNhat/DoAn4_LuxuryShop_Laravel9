@@ -31,14 +31,7 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
-        $product = DB::table('products')
-            ->join('attributesprices', 'attributesprices.ProductID', '=', 'products.Id')
-            ->join('producttranslation', 'producttranslation.ProductId', '=', 'products.Id')    
-            ->select('products.*','producttranslation.Description','producttranslation.Details','producttranslation.LanguageId','producttranslation.Name',
-            'producttranslation.SeoAlias','producttranslation.SeoDescription','producttranslation.SeoTitle','attributesprices.Price')
-            ->where('products.Id','=',$id)
-            ->get();
-        return view('admin/Product/update', ['product' => $product]);
+        
     }
 
     /**
@@ -46,30 +39,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $producttranslation = DB::table('producttranslation')
-            ->where('ProductId', $id)
-            ->where('LanguageId', 'vi-VN')->update([
-                'Name' => $request->Name,
-                'Details' => $request->Details,
-                'Description' => $request->Description,
-                'SeoDescription' => $request->SeoDescription,
-                'SeoTitle' => $request->SeoTitle,
-                'SeoAlias' => $request->SeoAlias,
-                'LanguageId' => $request->LanguageId
-            ]);
         
-
-        $attributesprices = DB::table('attributesprices')->where('ProductID', $id)->update([
-            'Price' => $request->Price
-        ]);
-        
-        ProductsModels::find($id)->update([
-            'CatID' => $request->CatID,
-            'Discount' => $request->Discount,
-            'UnitsInStock' => $request->UnitsInStock,
-            'Title' => $request->Title
-        ]);
-        return redirect()->route('admin.Products.index');
     }
 
     /**
@@ -77,10 +47,7 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        $producttranslation = DB::table('producttranslation')->where('ProductId', $id)
-            ->where('LanguageId', 'vi-VN')->delete();
-        $attributesprices = DB::table('attributesprices')->where('ProductID', $id)->delete();
-        ProductsModels::find($id)->delete();
-        return redirect()->route('admin.Products.index');
+        Orders::find($id)->delete();
+        return redirect()->route('admin.Orders.index');
     }
 }

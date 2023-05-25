@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CategoriesModels;
+use App\Models\CategoriestranslationModels;
 use App\Models\Customers;
 use App\Models\OrderDetails;
 use App\Models\Orders;
@@ -14,7 +15,7 @@ class CartController extends Controller
 {
     public function cartList()
     {
-        $category = CategoriesModels::where('LanguageId','=','vi-VN')->get();
+        $category = CategoriestranslationModels::where('LanguageId','=','vi-VN')->get();
         $cartItems = \Cart::getContent();
         return view('/cart',['categories' => $category,'languageId'=> 'vi-VN'],compact('cartItems'));
     }
@@ -74,7 +75,7 @@ class CartController extends Controller
     public function checkoutget($language = 'vi-VN')
     {
         $cartItems = \Cart::getContent();
-        $category = CategoriesModels::where('LanguageId','=',$language)->get();
+        $category = CategoriestranslationModels::where('LanguageId','=',$language)->get();
         // dd($cartItems);
         return view('checkout', compact('cartItems'),['categories' => $category,'languageId'=> 'vi-VN']);
     }

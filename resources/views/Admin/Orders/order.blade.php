@@ -59,8 +59,8 @@
                                 <td>{{$order->UPDATED_AT}}</td>
                                 <td>
                                     <a href="{{route('admin.OrderDetails.index').'/'.$order->Id}}" class="btn btn-infor">Chi tiết</a>
-                                    <a href="{{route('admin.Products.edit').'/'.$order->Id}}" class="btn btn-infor">Sửa</a>
-                                    <a href="{{route('admin.Products.delete').'/'.$order->Id}}" class="btn btn-danger">Xóa</a>
+                                    <!-- <a href="{{route('admin.Products.edit').'/'.$order->Id}}" class="btn btn-infor">Sửa</a> -->
+                                    <a href="{{route('admin.Orders.delete').'/'.$order->Id}}" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>
                             @endforeach

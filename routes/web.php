@@ -28,6 +28,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function(){
     Route::get('/404/{languageId?}','NotFound')->name('404');
     Route::get('/about/{languageId?}','About')->name('about');
     Route::get('/pages/{languageId?}','pages')->name('pages');
+    Route::get('/productSearch/{languageId?}','search')->name('search');
 });
 
 Route::controller(App\Http\Controllers\adminController::class)->group(function(){
@@ -47,6 +48,15 @@ Route::controller(App\Http\Controllers\ProductsController::class)->group(functio
     Route::get('/admin/Products/delete/{id?}','destroy')->name('admin.Products.delete'); 
 });
 
+Route::controller(App\Http\Controllers\CategoriesController::class)->group(function(){
+    Route::get('/admin/Categories/index','index')->name('admin.Categories.index');   
+    Route::get('/admin/Categories/create','create')->name('admin.Categories.create');   
+    Route::post('/admin/Categories/store','store')->name('admin.Categories.store');   
+    Route::get('/admin/Categories/edit/{id?}','edit')->name('admin.Categories.edit');   
+    Route::post('/admin/Categories/update/{id?}','update')->name('admin.Categories.update'); 
+    Route::get('/admin/Categories/delete/{id?}','destroy')->name('admin.Categories.delete'); 
+});
+
 Route::controller(App\Http\Controllers\ListImageProductController::class)->group(function(){
     Route::get('/admin/ListImageProduct/index','index')->name('admin.ListImageProduct.index'); 
     Route::get('/admin/ListImageProduct/create/{id?}','create')->name('admin.ListImageProduct.create'); 
@@ -58,8 +68,8 @@ Route::controller(App\Http\Controllers\ListImageProductController::class)->group
 Route::controller(App\Http\Controllers\OrderController::class)->group(function(){
     Route::get('/admin/Orders/index','index')->name('admin.Orders.index');   
     Route::get('/admin/OrderDetails/index/{id?}','detail')->name('admin.OrderDetails.index');     
-    Route::get('/admin/Orders/edit/{id?}','edit')->name('admin.Orders.edit');   
-    Route::post('/admin/Orders/update/{id?}','update')->name('admin.Orders.update'); 
+    // Route::get('/admin/Orders/edit/{id?}','edit')->name('admin.Orders.edit');   
+    // Route::post('/admin/Orders/update/{id?}','update')->name('admin.Orders.update'); 
     Route::get('/admin/Orders/delete/{id?}','destroy')->name('admin.Orders.delete'); 
 });
 
