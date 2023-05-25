@@ -28,7 +28,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function(){
     Route::get('/404/{languageId?}','NotFound')->name('404');
     Route::get('/about/{languageId?}','About')->name('about');
     Route::get('/pages/{languageId?}','pages')->name('pages');
-    Route::get('/productSearch/{languageId?}','search')->name('search');
+    Route::post('/productSearch/{languageId?}','search')->name('search');
 });
 
 Route::controller(App\Http\Controllers\adminController::class)->group(function(){

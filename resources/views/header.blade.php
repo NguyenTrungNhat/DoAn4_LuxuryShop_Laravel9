@@ -48,16 +48,20 @@
                             <img src="/webApp/assets/images/logo/dark.png" alt="Header Logo">
                         </a>
                         <div class="header-search-area d-none d-lg-block">
-                            <form action="#" class="header-searchbox form-categories">
-                                <!-- <select class="nice-select select-search-category wide"> -->
-                                <select class="form-select-categories">
-                                    <option value="all">All Category</option>
-                                    @foreach($categories as $ca)
+                            <form action="{{route('search').'/'.$languageId}}" method="post" class="header-searchbox form-categories">
+                                <div style="display: flex;
+                                            flex-grow: 1;"class="form-group">
+                                    <!-- <select class="nice-select select-search-category wide"> -->
+                                    <select name="category" class="form-select-categories">
+                                        <option value="all">All Category</option>
+                                        @foreach($categories as $ca)
                                         <option value="{{$ca->CatID}}">{{$ca->Name}}</option>
-                                    @endforeach
+                                        @endforeach
+                                    </select>
                                     
-                                </select>
-                                <input class="input-field form-categories-input" type="text" placeholder="Search Products">
+                                    <input name='value' class="form-control input-field form-categories-input" type="text" placeholder="Search Products">
+                                </div>
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <button class="btn btn-outline-whisper btn-primary-hover" type="submit"><i class="pe-7s-search"></i></button>
                             </form>
                         </div>
